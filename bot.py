@@ -77,6 +77,7 @@ def about(msg):
     userid = msg.from_user.id
     msg = "🇧🇷 Este é um bot simples que mostra como usar o webapp para enviar dados para o bot.\n\n"
     msg += "🇺🇸 This is a simple bot that shows how to use webapp to send data to the bot.\n\n"
+    msg += "Repositório / Repository: https://github.com/arthurrogado/WebApp-Telegram-Bot\n"
     msg += "Contact me / Contate-me: @arthurrogado"
     bot.send_message(userid, msg)
 
