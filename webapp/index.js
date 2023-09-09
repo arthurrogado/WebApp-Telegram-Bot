@@ -1,5 +1,7 @@
 const webapp = window.Telegram.WebApp
 
+webapp.expand()
+
 let params = new URLSearchParams(window.location.search)
 let name = params.get("name")
 let age = params.get("age")
