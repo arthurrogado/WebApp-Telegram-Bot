@@ -62,16 +62,6 @@ def answer(wmsg):
         bot.send_message(wmsg.from_user.id, 'Error, but data: \n\n' + response)
 
 
-# Any messages handler
-@bot.message_handler(func= lambda msg: True)
-def any(msg):
-    userid = msg.from_user.id
-    initial_markup = InlineKeyboardMarkup()
-    initial_markup.add(InlineKeyboardButton('🇺🇸 Start empty webapp | 🇧🇷 Iniciar webapp vazio', callback_data='start_webapp'))
-    initial_markup.add(InlineKeyboardButton('🇺🇸 Send data to webapp | 🇧🇷 Enviar dados ao webapp', callback_data='get_info_to_webapp'))
-    bot.send_message(userid, 'Hello, world!', reply_markup= initial_markup)
-
-
 @bot.message_handler(commands=['about'])
 def about(msg):
     userid = msg.from_user.id
@@ -80,6 +70,16 @@ def about(msg):
     msg += "Repositório / Repository: https://github.com/arthurrogado/WebApp-Telegram-Bot\n"
     msg += "Contact me / Contate-me: @arthurrogado"
     bot.send_message(userid, msg)
+
+
+# Any messages handler
+@bot.message_handler(func= lambda msg: True)
+def any(msg):
+    userid = msg.from_user.id
+    initial_markup = InlineKeyboardMarkup()
+    initial_markup.add(InlineKeyboardButton('🇺🇸 Start empty webapp | 🇧🇷 Iniciar webapp vazio', callback_data='start_webapp'))
+    initial_markup.add(InlineKeyboardButton('🇺🇸 Send data to webapp | 🇧🇷 Enviar dados ao webapp', callback_data='get_info_to_webapp'))
+    bot.send_message(userid, 'Hello, world!', reply_markup= initial_markup)
 
 
 @bot.callback_query_handler(func= lambda call: True)
