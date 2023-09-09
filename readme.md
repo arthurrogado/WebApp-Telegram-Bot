@@ -20,8 +20,8 @@
 1. Create a bot with @BotFather
 2. Fill api_token.py with your bot token
 3. Deploy the webapp folder to a server (must be https) and fill WEBAPP_URL in bot.py
-3.1. If you don't have a server, you can use ngrok to create a tunnel to your localhost
-3.2. A free option of a server, and is what I used, is squarecloud.app (https://squarecloud.app/)
+3.1 If you don't have a server, you can use ngrok to create a tunnel to your localhost
+3.2 A free option of a server, and is what I used, is squarecloud.app (https://squarecloud.app/)
 4. Run bot.py
 
 ## Working example:
