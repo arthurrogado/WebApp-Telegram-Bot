@@ -10,7 +10,10 @@ import json
 from urllib.parse import quote as urlparse
 from api_token import API_TOKEN
 import requests
-
+from PIL import Image, ImageDraw, ImageFont
+import textwrap
+from io import BytesIO
+from Card import create_card
 
 WEBAPP_URL = "https://mysite-simple-website.squareweb.app/"
 
@@ -147,6 +150,19 @@ class ReceiveData():
         msg += "Data: " + str(self.data) + '\n\n'
         msg += f"Name/Nome: {self.data.get('name')}\n Age/Idade: {self.data.get('age')}"
         self.bot.send_message(self.userid, msg)
+        self.send_card()
+
+    def send_card(self):
+        self.bot.send_chat_action(self.userid, 'upload_photo')
+        msg = "🇧🇷 Enviando uma mensagem com um cartão criado a partir dos dados recebidos do webapp.\n\n"
+        msg += "🇺🇸 Sending a message with a card created from data received from webapp.\n\n"
+        self.bot.send_message(self.userid, msg)
+        img = create_card(self.data.get('name'), self.data.get('age'))
+        bio = BytesIO()
+        bio.name = 'image.jpeg'
+        img.save(bio, 'JPEG')
+        bio.seek(0)
+        self.bot.send_photo(self.userid, bio)
 
 
 class RandomImage():

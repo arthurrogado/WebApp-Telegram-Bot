@@ -1,2 +1,5 @@
 venv/
 api_token.py
+novo_webapp
+novo_bot.py
+__pycache__/

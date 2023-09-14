@@ -1,1 +1,9 @@
-pytelegrambotapi
+certifi==2023.7.22
+charset-normalizer==3.2.0
+html2image==2.0.4.3
+idna==3.4
+Pillow==10.0.0
+pyTelegramBotAPI==4.13.0
+requests==2.31.0
+urllib3==2.0.4
+websocket-client==1.6.3
