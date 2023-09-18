@@ -26,7 +26,7 @@ def tirar_print(html, css = "", size=(500, 500)):
     except Exception as e:
         # throw error
         print("Error. File not found. Maybe hti does not work")
-        return Exception("Error. File not found. Maybe hti does not work")
+        raise Exception("Error. File not found. Maybe hti does not work")
 
 
 if __name__ == '__main__':
