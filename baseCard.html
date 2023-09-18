@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento</title>
+
+    <style>
+
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            border: 1px solid black;
+            color: white;
+            width: 450px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 20px;
+            /* background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); */
+            background: linear-gradient(180deg, #1955d8 0%, rgb(0, 0, 65) 100%);
+        }
+
+        .message {
+            width: 200px;
+            height: 100px;
+            background-color: white;
+            border-radius: 10px;
+            margin: 8px;
+
+            color: black;
+            font-size: 20px;
+
+            padding: 6px;
+            width: 75%;
+
+            height: fit-content;
+
+        }
+
+        .message div {
+            margin: 10px 0px;
+        }
+
+        .me {
+            background-color: rgb(151, 212, 253);
+            align-self: flex-end;
+        }
+
+        .other {
+            background-color: #c4c4c4;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+
+        <div class="div message other">
+            <div>Qual seu nome?</div>
+            <div>What's your name?</div>
+        </div>
+
+        <div class="message me">
+            <div>
+                Meu nome é {{nome}} e apenas isso, tudo bem?
+            </div>
+            <div>
+                My name is {{nome}} and that's it, ok?
+            </div>
+        </div>
+
+        <div class="message other">
+            <div>Qual sua idade?</div>
+            <div>How old are you?</div>
+        </div>
+
+        <div class="message me">
+            <div>
+                Eu tenho {{idade}} anos, e você?
+            </div>
+            <div>
+                I'm {{idade}} years old, and you?
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>

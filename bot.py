@@ -13,7 +13,7 @@ import requests
 from PIL import Image, ImageDraw, ImageFont
 import textwrap
 from io import BytesIO
-from Card import create_card
+from Card import create_card, create_html_card
 
 WEBAPP_URL = "https://mysite-simple-website.squareweb.app/"
 
@@ -61,6 +61,10 @@ def answer(wmsg):
 
     except Exception as e:
         print("#Error", e)
+        # get line of error
+        import traceback
+        traceback.print_exc()
+
         response = wmsg.web_app_data.data
         bot.send_message(wmsg.from_user.id, 'Error, but data: \n\n' + response)
 
@@ -157,12 +161,26 @@ class ReceiveData():
         msg = "🇧🇷 Enviando uma mensagem com um cartão criado a partir dos dados recebidos do webapp.\n\n"
         msg += "🇺🇸 Sending a message with a card created from data received from webapp.\n\n"
         self.bot.send_message(self.userid, msg)
-        img = create_card(self.data.get('name'), self.data.get('age'))
+        try:
+            img = create_html_card(name=self.data.get('name'), age=self.data.get('age'))
+        except Exception as e:
+            print("#Error", e)
+            # get line of error
+            import traceback
+            traceback.print_exc()
+            # use PIL to create card
+            print(self.data.get('name'), self.data.get('age'))
+            img = create_card(name=self.data.get('name'), age=self.data.get('age'))
+
         bio = BytesIO()
         bio.name = 'image.jpeg'
-        img.save(bio, 'JPEG')
+        img.save(bio, 'PNG')
         bio.seek(0)
+
+        self.bot.send_document(self.userid, bio)
+        bio.seek(0) # voltar para o início do arquivo
         self.bot.send_photo(self.userid, bio)
+
 
 
 class RandomImage():

@@ -1,5 +1,6 @@
 import textwrap
 from PIL import Image, ImageDraw, ImageFont
+from HtmlToImage.html_to_image import tirar_print 
 
 def create_card(name, age):
     # Create a blank image
@@ -29,5 +30,12 @@ def create_card(name, age):
         y_text += 30
 
     return img
+
+def create_html_card(name, age):
+    with open("./baseCard.html", "r", encoding='utf8') as file:
+        string_html = str(file.read())
+        string_html = string_html.replace("{{nome}}", name)
+        string_html = string_html.replace("{{idade}}", age)
+        return tirar_print(string_html)
 
 #create_card("Arthur", "20").show()
